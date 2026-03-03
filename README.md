@@ -9,7 +9,7 @@ Autonomous Driving, Model Predictive Control, Model-Based Reinforcement Learning
 ## 1. Introduction and Motivation
 <p>
   <img src="./horizon.png" style="max-width: 70%; height: auto;" alt="horizon" />
-  </br>
+  <br>
   <em>What is the "sweet spot" to bridge the gap between fast, short-horizon MPC and informative, long-horizon MPC?</em>
 </p>
 
@@ -34,7 +34,7 @@ This research addresses these bottlenecks through a three-pillared architectural
 ### 3.1. Leveraging Latent Context via World Models
 <p>
   <img src="./network.png" style="max-width: 70%; height: auto;" alt="network" />
-  </br>
+  <br>
   <em>A latent dynamics (world model) that projects vehicle states and cropped map contexts into the future to provide a long-term value heuristic as a complementary to short-term plan.</em>
 </p>
 
@@ -54,7 +54,7 @@ To train a robust Implicit Q-Learning (IQL) Value Model that accurately predicts
 ## 4. Expected Contributions and Impact
 <p>
   <img src="./trajshow.png" style="max-width: 80%; height: auto;" alt="trajshow" />
-  </br>
+  <br>
   <em>The vehicle agent efficiently navigates unstructured environments by combining short-horizon Model Predictive Control (MPC) with a learned terminal value model.</em>
 </p>
 
