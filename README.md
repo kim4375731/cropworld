@@ -3,7 +3,7 @@ CropWorld: Learning Driving Context Beyond the Horizon with Cropped Map
 ### Author
 Yongjae Kim
 ### Academic supervisor
-Hwangbo Jemin
+Jemin Hwangbo
 ### Keyword
 Autonomous Driving, Model Predictive Control, Model-Based Reinforcement Learning 
 ## 1. Introduction and Motivation
