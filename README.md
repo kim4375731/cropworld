@@ -1,13 +1,13 @@
-# CropWorld
 ### Project title
-CropWorld: Learning driving context beyond the horizon with cropped map
-### Authors
+CropWorld: Learning Driving Context Beyond the Horizon with Cropped Map
+### Author
 Yongjae Kim
 ### Academic supervisor
 Hwangbo Jemin
 ### Keyword
-Autonomous Driving, Model-Based Reinforcement Learning, Model Predictive Control
+Autonomous Driving, Model Predictive Control, Model-Based Reinforcement Learning 
 ## 1. Introduction and Motivation
+![horizon](horizon.jpg)*Caption goes here*
 
 A fundamental dilemma in autonomous off-road navigation is balancing prediction horizons with computational feasibility. In unstructured environments, traditional mathematical modeling of vehicle dynamics is exceptionally difficult due to complex, highly stochastic vehicle-terrain interactions like traction loss and suspension compression. Consequently, robust navigation systems must rely on Neural Network (NN) vehicle dynamics as the core model to accurately roll out sample trajectories.
 
