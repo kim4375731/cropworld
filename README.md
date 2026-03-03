@@ -7,7 +7,11 @@ Hwangbo Jemin
 ### Keyword
 Autonomous Driving, Model Predictive Control, Model-Based Reinforcement Learning 
 ## 1. Introduction and Motivation
-![horizon](horizon.jpg)*Caption goes here*
+<p>
+  <img src="./horizon.png" style="max-width: 70%; height: auto;" alt="horizon" />
+  </br>
+  <em>What is the "sweet spot" to bridge the gap between fast, short-horizon MPC and informative, long-horizon MPC?</em>
+</p>
 
 A fundamental dilemma in autonomous off-road navigation is balancing prediction horizons with computational feasibility. In unstructured environments, traditional mathematical modeling of vehicle dynamics is exceptionally difficult due to complex, highly stochastic vehicle-terrain interactions like traction loss and suspension compression. Consequently, robust navigation systems must rely on Neural Network (NN) vehicle dynamics as the core model to accurately roll out sample trajectories.
 
@@ -21,13 +25,18 @@ To achieve high-speed, safe autonomy without exceeding computational budgets, th
 
 1. **The Computational Bottleneck of Neural Dynamics:** Rolling out Neural Network dynamics models over long horizons for thousands of MPPI samples is computationally prohibitive on edge devices, forcing the use of short, blind horizons that fail to utilize the given BEV cost maps.
 2. **Learning Long-Term Outcomes from Cropped Contexts:** While world models can effectively compress state spaces, translating these latent representations—combined with spatially cropped BEV maps—into a reliable Value Model that accurately predicts future safety and task outcomes remains a significant challenge, particularly in offline settings.
-3. **Gradient Instability in Multimodal Fusion:** Combining high-dimensional spatial data (cropped BEV maps) with low-dimensional task intents and latent vehicle states inherently causes internal scale conflicts and gradient explosion during Value Function approximation, destabilizing the learning of the driving context.
+3. **Unstable Learning in Multimodal Fusion:** Combining high-dimensional spatial data (cropped BEV maps) with low-dimensional task intents and latent vehicle states inherently causes internal scale conflicts and gradient explosion during Value Function approximation, destabilizing the learning of the driving context.
 
 ## 3. Proposed Methodology
 
 This research addresses these bottlenecks through a three-pillared architectural approach, strictly optimized for real-time inference on edge computing platforms.
 
 ### 3.1. Leveraging Latent Context via World Models
+<p>
+  <img src="./network.png" style="max-width: 70%; height: auto;" alt="network" />
+  </br>
+  <em>A latent dynamics (world model) that projects vehicle states and cropped map contexts into the future to provide a long-term value heuristic as a complementary to short-term plan.</em>
+</p>
 
 To generate the driving context required for the Value Model, this research adopts the Recurrent State Space Model (RSSM) architecture, foundational to the Dreamer agent. While the RSSM is an established framework for latent dynamics, this work adapts it to continuously match stochastic latent vehicle states ($h, z$) with cropped BEV maps. This provides the Value Model with a compact, highly expressive representation of the vehicle's physical reality and immediate surroundings, without the computational burden of rolling out raw visual data.
 
@@ -43,6 +52,11 @@ To resolve gradient explosion and successfully learn the future outcomes, we aba
 To train a robust Implicit Q-Learning (IQL) Value Model that accurately predicts terminal outcomes, the network must understand the boundaries of safe navigation. However, generating negative examples (collisions, getting stuck) on physical hardware is highly destructive. Instead, this methodology leverages the learned stochastic dynamics and given BEV maps to generate a "Gaussian Noisy Expert" dataset offline. This consists of a 60/30/10 ratio of nominal expert driving, hallucinated recovery maneuvers, and simulated terminal failures, allowing the Value Model to learn the true cost of diverse driving contexts.
 
 ## 4. Expected Contributions and Impact
+<p>
+  <img src="./trajshow.png" style="max-width: 80%; height: auto;" alt="trajshow" />
+  </br>
+  <em>The vehicle agent efficiently navigates unstructured environments by combining short-horizon Model Predictive Control (MPC) with a learned terminal value model.</em>
+</p>
 
 This research will provide a mathematically sound and practically deployable framework for computationally efficient autonomous navigation. The key contributions include:
 
