@@ -35,7 +35,7 @@ This research addresses these bottlenecks through a three-pillared architectural
 <p>
   <img src="./network.png" style="max-width: 70%; height: auto;" alt="network" />
   <br>
-  <em>A latent dynamics (world model) that projects vehicle states and cropped map contexts into the future to provide a long-term value heuristic as a complementary to short-term plan.</em>
+  <em>A latent dynamics that projects driving contexts to provide a long-term value heuristic as a complementary to short-term planning.</em>
 </p>
 
 To generate the driving context required for the Value Model, this research adopts the Recurrent State Space Model (RSSM) architecture, foundational to the Dreamer agent. While the RSSM is an established framework for latent dynamics, this work adapts it to continuously match stochastic latent vehicle states ($h, z$) with cropped BEV maps. This provides the Value Model with a compact, highly expressive representation of the vehicle's physical reality and immediate surroundings, without the computational burden of rolling out raw visual data.
@@ -55,7 +55,7 @@ To train a robust Implicit Q-Learning (IQL) Value Model that accurately predicts
 <p>
   <img src="./trajshow.png" style="max-width: 80%; height: auto;" alt="trajshow" />
   <br>
-  <em>The vehicle agent efficiently navigates unstructured environments by combining short-horizon Model Predictive Control (MPC) with a learned terminal value model.</em>
+  <em>The vehicle agent efficiently navigates unstructured environments by combining short-horizon MPC with a learned terminal value model.</em>
 </p>
 
 This research will provide a mathematically sound and practically deployable framework for computationally efficient autonomous navigation. The key contributions include:
